@@ -1,19 +1,23 @@
 {
-    "name": "laravel-admin-ext/reporter",
+    "name": "liting-8124/laext-exception-reporter",
     "description": "Exception reporter for laravel",
     "type": "library",
     "keywords": ["laravel-admin", "exception", "reporter"],
-    "homepage": "https://github.com/laravel-admin-extensions/reporter",
+    "homepage": "https://github.com/liting-8124/laext-exception-reporter",
     "license": "MIT",
     "authors": [
         {
             "name": "z-song",
             "email": "zosong@126.com"
+        },
+        {
+            "name": "liting",
+            "email": "liting8124@gmail.com"
         }
     ],
     "require": {
         "php": ">=7.0.0",
-        "laravel/framework": "~5.5",
+        "laravel/framework": "5.7.*|5.8.*|^6.0|^7.0",
         "encore/laravel-admin": "~1.5"
     },
     "require-dev": {
@@ -30,7 +34,6 @@
             "providers": [
                 "Encore\\Admin\\Reporter\\ReporterServiceProvider"
             ]
-
         }
     }
 }

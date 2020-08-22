@@ -48,7 +48,7 @@ class Frame
             $this->attributes['class'] = $matches[1];
             $this->attributes['method'] = $matches[2];
             $this->attributes['args'] = $this->extractArgs($matches[3]);
-            if (Str::contains($matches[2], ['{closure}']) && array_get($this->attributes, 'name') == '[internal function]') {
+            if (Str::contains($matches[2], ['{closure}']) && data_get($this->attributes, 'name') == '[internal function]') {
                 $this->attributes['name'] .= " $matches[1]->$matches[2]";
             }
             // class method call
@@ -61,10 +61,10 @@ class Frame
 
     public function fetchCodeBlock()
     {
-        $filename = array_get($this->attributes, 'file');
-        $lineNo = array_get($this->attributes, 'line');
-        $class = array_get($this->attributes, 'class');
-        $method = array_get($this->attributes, 'method');
+        $filename = data_get($this->attributes, 'file');
+        $lineNo = data_get($this->attributes, 'line');
+        $class = data_get($this->attributes, 'class');
+        $method = data_get($this->attributes, 'method');
         if ((!$filename || !$lineNo) && ($class && $method)) {
             if (!class_exists($class)) {
                 return;
@@ -121,7 +121,7 @@ class Frame
 
     public function method()
     {
-        return array_get($this->attributes, 'method', array_get($this->attributes, 'function', ''));
+        return data_get($this->attributes, 'method', data_get($this->attributes, 'function', ''));
     }
 
     public function args()
@@ -132,7 +132,7 @@ class Frame
         $args = [];
         $names = $this->getParameterNames();
         foreach ($this->attributes['args'] as $key => $val) {
-            $args[array_get($names, $key, "param$key")] = $val;
+            $args[data_get($names, $key, "param$key")] = $val;
         }
 
         return $args;
@@ -144,8 +144,8 @@ class Frame
     public function getParameterNames()
     {
         $names = [];
-        $class = array_get($this->attributes, 'class');
-        $method = array_get($this->attributes, 'method');
+        $class = data_get($this->attributes, 'class');
+        $method = data_get($this->attributes, 'method');
         if ($class && isset($method)) {
             $classReflection = new \ReflectionClass($class);
             if (!$classReflection->hasMethod($method)) {
@@ -171,16 +171,16 @@ class Frame
 
     public function line()
     {
-        return array_get($this->attributes, 'line', 0);
+        return data_get($this->attributes, 'line', 0);
     }
 
     public function __call($method, $arguments = [])
     {
-        return array_get($this->attributes, $method, '');
+        return data_get($this->attributes, $method, '');
     }
 
     public function __get($key)
     {
-        return array_get($this->attributes, $key, '');
+        return data_get($this->attributes, $key, '');
     }
 }

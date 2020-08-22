@@ -3,10 +3,12 @@ Exception reporter for laravel-admin
 
 This tool stores the exception information into the database and provides a developer-friendly web interface to view the exception information.
 
+<!--
 [![StyleCI](https://styleci.io/repos/97900053/shield?branch=master)](https://styleci.io/repos/97900053)
 [![Packagist](https://img.shields.io/packagist/l/laravel-admin-ext/reporter.svg?maxAge=2592000)](https://packagist.org/packages/laravel-admin-ext/reporter)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-admin-ext/reporter.svg?style=flat-square)](https://packagist.org/packages/laravel-admin-ext/reporter)
 [![Pull request welcome](https://img.shields.io/badge/pr-welcome-green.svg?style=flat-square)]()
+-->
 
 ## Screenshot
 
@@ -15,11 +17,11 @@ This tool stores the exception information into the database and provides a deve
 ## Installation 
 
 ```
-$ composer require laravel-admin-ext/reporter -vvv
+$ composer require liting-8124/laext-exception-reporter -vvv
 
 $ php artisan vendor:publish --tag=laravel-admin-reporter
 
-$ php artisan migrate --path=vendor/laravel-admin-ext/reporter/database/migrations
+$ php artisan migrate --path=vendor/liting-8124/laext-exception-reporter/database/migrations
 
 $ php artisan admin:import reporter
 ```
