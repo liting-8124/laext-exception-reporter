@@ -26,11 +26,11 @@ class Reporter extends Extension
     }
 
     /**
-     * @param \Exception $exception
+     * @param \Throwable $exception
      *
      * @return mixed
      */
-    public static function report(\Exception $exception)
+    public static function report(\Throwable $exception)
     {
         $reporter = new static(request());
 
@@ -38,11 +38,11 @@ class Reporter extends Extension
     }
 
     /**
-     * @param \Exception $exception
+     * @param \Throwable $exception
      *
      * @return bool
      */
-    public function reportException(\Exception $exception)
+    public function reportException(\Throwable $exception)
     {
         $data = [
 
